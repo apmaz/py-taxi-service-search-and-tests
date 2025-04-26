@@ -42,7 +42,7 @@ class PrivateCarTests(TestCase):
         self.assertTemplateUsed(response, "taxi/car_list.html")
 
     def test_search_form_in_car(self):
-        response = self.client.get(CAR_LIST_URL, {"title": "Audi"})
+        response = self.client.get(CAR_LIST_URL, {"model": "Audi"})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Audi A4")
         self.assertContains(response, "Audi S4")

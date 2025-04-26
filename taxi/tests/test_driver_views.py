@@ -9,7 +9,7 @@ DRIVER_LIST_URL = reverse("taxi:driver-list")
 
 
 class PublicDriverTests(TestCase):
-    def test_manufacturer_login_required(self):
+    def test_driver_login_required(self):
         response = self.client.get(DRIVER_LIST_URL)
         self.assertNotEquals(response.status_code, 200)
 
@@ -65,7 +65,7 @@ class PrivateDriverTests(TestCase):
         self.assertTemplateUsed(response, "taxi/driver_list.html")
 
     def test_search_form_in_manufacturer(self):
-        response = self.client.get(DRIVER_LIST_URL, {"title": "user"})
+        response = self.client.get(DRIVER_LIST_URL, {"username": "user"})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "username")
         self.assertContains(response, "test.user")

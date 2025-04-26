@@ -39,7 +39,7 @@ class PrivateManufacturerTests(TestCase):
         self.assertTemplateUsed(response, "taxi/manufacturer_list.html")
 
     def test_search_form_in_manufacturer(self):
-        response = self.client.get(MANUFACTURER_LIST_URL, {"title": "Toyota"})
+        response = self.client.get(MANUFACTURER_LIST_URL, {"name": "Toyota"})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Toyota Prado")
         self.assertContains(response, "Toyota Camry")
